@@ -37,6 +37,27 @@
     <link href="https://fonts.googleapis.com/css2?family=Source+Code+Pro&display=swap" rel="stylesheet">
 <meta name="generator" content="Hexo 6.3.0"></head>
 
+
+<script>
+    let state,visiblityChange;
+    if (typeof document.hidden !== 'undefined'){
+        visibilityChange = 'visibilitychange';
+        state = 'visibilityState';
+    
+    } else if(typeof document.webkitHidden !== 'undefined'){
+        visibilityChange = 'webkitvisibilitychange';
+        state = 'webkitVisibilityState';
+    }
+
+    document.addEventListener('visibilitychange',function(){
+        if(document[state] === 'hidden'){
+            // 已离开当前页面
+            document.title = '┌(。Д。)┐你咋跑路了'
+        } else if (document[state] === 'visible'){
+            document.title = '(๐॔˃̶ᗜ˂̶๐॓)回来拉'
+        }
+    })
+</script>
 <body class="loading">
     <span id="config-title" style="display:none">Hexo</span>
     <div id="loader"></div>
@@ -114,6 +135,10 @@
 
 
     </div>
+    
+        <div class="side">
+            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Quick-Start"><span class="toc-number">1.</span> <span class="toc-text">Quick Start</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Create-a-new-post"><span class="toc-number">1.1.</span> <span class="toc-text">Create a new post</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Run-server"><span class="toc-number">1.2.</span> <span class="toc-text">Run server</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Generate-static-files"><span class="toc-number">1.3.</span> <span class="toc-text">Generate static files</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Deploy-to-remote-sites"><span class="toc-number">1.4.</span> <span class="toc-text">Deploy to remote sites</span></a></li></ol></li></ol>
+        </div>
     
 </div>
 

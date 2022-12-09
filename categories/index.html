@@ -37,6 +37,27 @@
     <link href="https://fonts.googleapis.com/css2?family=Source+Code+Pro&display=swap" rel="stylesheet">
 <meta name="generator" content="Hexo 6.3.0"></head>
 
+
+<script>
+    let state,visiblityChange;
+    if (typeof document.hidden !== 'undefined'){
+        visibilityChange = 'visibilitychange';
+        state = 'visibilityState';
+    
+    } else if(typeof document.webkitHidden !== 'undefined'){
+        visibilityChange = 'webkitvisibilitychange';
+        state = 'webkitVisibilityState';
+    }
+
+    document.addEventListener('visibilitychange',function(){
+        if(document[state] === 'hidden'){
+            // 已离开当前页面
+            document.title = '┌(。Д。)┐你咋跑路了'
+        } else if (document[state] === 'visible'){
+            document.title = '(๐॔˃̶ᗜ˂̶๐॓)回来拉'
+        }
+    })
+</script>
 <body class="loading">
     <span id="config-title" style="display:none">Hexo</span>
     <div id="loader"></div>
