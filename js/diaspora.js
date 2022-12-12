@@ -635,7 +635,13 @@ $(function() {
     if (comment.data('ae') == true){
         comment.click();
     }
-		
+	
+    // 点击自动滑动一屏
+    var  screen_body = (window.opera) ? (document.compatMode == "CSS1Compat" ? $('html') : $('body')) : $('html,body'); // 这行是 Opera 的补丁, 少了它 Opera 是直接用跳的而且画面闪烁 by willin
+    $('.scroll-down i').click('on',function(){
+        screen_body.animate({ scrollTop: $(window).height() }, 2000);
+    })
+
     console.log("%c Github %c","background:#24272A; color:#ffffff","","https://github.com/Fechin/hexo-theme-diaspora")
 })
 
