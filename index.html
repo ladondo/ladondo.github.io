@@ -13,7 +13,7 @@
     
     <meta name="author" content="John Doe"> 
     <link rel="alternative" href="atom.xml" title="Hexo" type="application/atom+xml"> 
-    <link rel="icon" href="/img/favicon.png"> 
+    <link rel="icon" href="/img/favicon_new.png"> 
     
     
     
@@ -104,7 +104,7 @@
         
             <a href="/" title="github" class="iconfont icon-github" target="_blank" rel="noopener"> </a>
         
-            <a href="/img/logo.png" title="wechat" class="iconfont icon-wechat" target="_blank" rel="noopener"> </a>
+            <a href="/img/logo_new.png" title="wechat" class="iconfont icon-wechat" target="_blank" rel="noopener"> </a>
         
             <a href="mailto:xxxx@gmail.com" title="email" class="iconfont icon-email" target="_blank" rel="noopener"> </a>
         
@@ -112,7 +112,7 @@
 	</p>
 	
     <p id="copyright">
-        &copy; 2022 John Doe.
+        &copy; 2023 John Doe.
         <span> | </span>Powered by <a href="https://hexo.io/" title="Hexo" target="_blank" rel="noopener">Hexo</a>
         <span> | </span>Theme <a href="https://github.com/Fechin/hexo-theme-diaspora" title="Diaspora" target="_blank" rel="noopener">Diaspora</a> by Fechin
 		
@@ -124,7 +124,7 @@
 <div id="screen">
     <div id="mark">
         <div class="layer" data-depth="0.4">
-            <img src="/img/welcome-cover.jpg" id="cover" crossorigin="anonymous" width="1920" height="1080">
+            <img src="/img/loading.gif" data-original="/img/welcome-cover.jpg" id="cover" crossorigin="anonymous" width="1920" height="1080">
         </div>
     </div>
     <div id="vibrant">
@@ -166,7 +166,7 @@
         
 <div class="post">
     <a href="/2022/12/09/first/" title="first creation">
-        <img src="/img/cover1.jpg" class="cover" width="680" height="440">
+        <img src="/img/loading.gif" data-original="https://raw.githubusercontent.com/ladondo/imgCDN/master/img/cover1.jpg" class="cover" width="680" height="440">
     </a>
     <div class="else">
         <p>十二月 09, 2022</p>
@@ -179,7 +179,7 @@
 
 <div class="post">
     <a href="/2022/12/08/hello-world/" title="Hello World">
-        <img src="/img/cover3.jpg" class="cover" width="680" height="440">
+        <img src="/img/loading.gif" data-original="https://raw.githubusercontent.com/ladondo/imgCDN/master/img/welcome-cover.jpg" class="cover" width="680" height="440">
     </a>
     <div class="else">
         <p>十二月 08, 2022</p>
@@ -196,13 +196,111 @@
 
 
 
-</body>
+<script type="text/javascript">
+
+    // 修改鼠标右键事件
+    (function(){
+        var menu = document.createElement("div");
+        menu.id="contextmenu";
+        menu.className="hidden";
+        menu.innerHTML = 
+            '<ul>'
+                +'<li onclick="reload()">刷新</li>'
+                +'<li>跳转</li>'
+                +'<li>345</li>'
+                +'<li>567</li>'
+                +'<li>678</li>'
+            +'</ul>';
+        document.body.appendChild(menu);
+        
+        // 绑定事件
+        bindEvent(document, "contextmenu" , closeContextMenu);
+        bindEvent(document, "mouseup" , openNewContextMenu);
+        bindEvent(document, "mousedown" , closeNewContextMenu);
+            
+        // 取消默认右键事件
+        function closeContextMenu(){
+            return false;
+        }   
+        
+        //鼠标摁下松开后事件
+        function openNewContextMenu( ev ){
+            ev = ev || window.event;
+            var btn = ev.button,
+            html = document.documentElement, 
+            x = ev.clientX, y = ev.clientY, 
+            vx = html.clientWidth, vy = html.clientHeight,
+            pl = ev.pageX , py = ev.pageY,
+            mw =  menu.offsetWidth, mh =  menu.offsetHeight;
+
+            
+            if( btn == 2){    
+                if((x + mw) >= vx){
+                    menu.style.left =  (x - mw) +"px";
+                }else{
+                    menu.style.left =  x +"px";
+                }
+
+                if((y + mh) >= vy){
+                    menu.style.top = (y - mh) +"px";
+                }else{
+                    menu.style.top =  y +"px";
+                }
+                // menu.style.top = (y + mh) >= vy ? (vy - mh) : py +"px";
+                // menu.style.left = (x + mw) >= vx ? (vx - mw) : pl +"px";
+                menu.className = "show";
+            } 
+        }
+    
+        // 鼠标摁下不松事件
+        function closeNewContextMenu( ev ){
+            menu.className = "hidden";
+        }
+
+        function bindEvent(elem , eventType , callback){
+            var ieType = ["on" + eventType ];
+            if( ieType in elem ){
+                elem[ ieType ] = callback;
+            }else if("attachEvent" in elem){
+                elem.attachEvent(ieType ,callback);
+            }else{
+                elem.addEventListener(eventType ,callback , false);
+            }
+        }
+        
+        
+    })();
+  
+    // 刷新事件
+    function reload(){
+        location.reload();
+    }
+
+
+
+
+</script>
+
+        <style>
+            [bg-lazy] {
+                background-image: none !important;
+                background-color: #eee !important;
+            }
+        </style>
+        <script>
+            window.imageLazyLoadSetting = {
+                isSPA: false,
+                preloadRatio: 3,
+                processImages: null,
+            };
+        </script><script>window.addEventListener("load",function(){var t=/\.(gif|jpg|jpeg|tiff|png)$/i,r=/^data:image\/[a-z]+;base64,/;Array.prototype.slice.call(document.querySelectorAll("img[data-original]")).forEach(function(a){var e=a.parentNode;"A"===e.tagName&&(e.href.match(t)||e.href.match(r))&&(e.href=a.dataset.original)})});</script><script>!function(r){r.imageLazyLoadSetting.processImages=t;var e=r.imageLazyLoadSetting.isSPA,n=r.imageLazyLoadSetting.preloadRatio||1,c=a();function a(){var t=Array.prototype.slice.call(document.querySelectorAll("img[data-original]")),e=Array.prototype.slice.call(document.querySelectorAll("[bg-lazy]"));return t.concat(e)}function t(){e&&(c=a());for(var t,o=0;o<c.length;o++)0<=(t=(t=c[o]).getBoundingClientRect()).bottom&&0<=t.left&&t.top<=(r.innerHeight*n||document.documentElement.clientHeight*n)&&function(){var t,e,n,a,i=c[o];e=function(){c=c.filter(function(t){return i!==t}),r.imageLazyLoadSetting.onImageLoaded&&r.imageLazyLoadSetting.onImageLoaded(i)},(t=i).hasAttribute("bg-lazy")?(t.removeAttribute("bg-lazy"),e&&e()):(n=new Image,a=t.getAttribute("data-original"),n.onload=function(){t.src=a,t.removeAttribute("data-original"),e&&e()},t.src!==a&&(n.src=a))}()}function i(){clearTimeout(t.tId),t.tId=setTimeout(t,500)}t(),document.addEventListener("scroll",i),r.addEventListener("resize",i),r.addEventListener("orientationchange",i)}(this);</script></body>
 
 
 <script src="//lib.baomitu.com/jquery/1.8.3/jquery.min.js"></script>
 <script src="/js/plugin.js"></script>
 <script src="/js/typed.js"></script>
 <script src="/js/diaspora.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/canvas-nest.js@1/dist/canvas-nest.js"></script>
 
 
 <link rel="stylesheet" href="/photoswipe/photoswipe.css">
